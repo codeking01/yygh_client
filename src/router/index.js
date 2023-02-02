@@ -54,7 +54,27 @@ export const constantRoutes = [
       meta: { title: 'Dashboard', icon: 'dashboard' }
     }]
   },
-
+  {
+    path: '/hospSet',
+    component: Layout,
+    redirect: '/hospSet/add',
+    name: 'hospSet',
+    meta: { title: '医院设置', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'index',
+        name: '查询设置',
+        component: () => import('@/views/hosp/index'),
+        meta: { title: '查询设置', icon: 'tree' }
+      },
+      {
+        path: 'add',
+        name: '添加设置',
+        component: () => import('@/views/hosp/add'),
+        meta: { title: '添加设置', icon: 'table' }
+      }
+    ]
+  },
   {
     path: '/example',
     component: Layout,
