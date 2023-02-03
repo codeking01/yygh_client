@@ -1,4 +1,4 @@
-import { login, logout, getInfo } from '@/api/user'
+import { login, logout, getInfo } from '@/api/login/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
 
@@ -29,7 +29,7 @@ const mutations = {
 
 const actions = {
   // user login
-  login({ commit }, userInfo) {
+ /*  login({ commit }, userInfo) {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
@@ -41,20 +41,24 @@ const actions = {
         reject(error)
       })
     })
+  }, */
+  login({ commit }) {
+    const data = {
+      'token': 'admin'
+    }
+    setToken(data.token)// 将token存储在cookie中
+    commit('SET_TOKEN', data.token)
   },
 
   // get user info
-  getInfo({ commit, state }) {
+/*   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
         const { data } = response
-
         if (!data) {
           return reject('Verification failed, please Login again.')
         }
-
         const { name, avatar } = data
-
         commit('SET_NAME', name)
         commit('SET_AVATAR', avatar)
         resolve(data)
@@ -62,10 +66,26 @@ const actions = {
         reject(error)
       })
     })
+  }, */
+
+  getInfo({ commit }) {
+    const data = {
+      'roles': [
+        'admin'
+      ],
+      'name': 'admin',
+      'avatar': ''
+    }
+    if (data.roles &&data.roles.length >0) { // 验证返回的roles是否是一个非空数组
+      commit('SET_ROLES', data.roles)
+    }
+    commit('SET_NAME', data.name)
+    commit('SET_AVATAR', data.avatar)
   },
 
+
   // user logout
-  logout({ commit, state }) {
+/*   logout({ commit, state }) {
     return new Promise((resolve, reject) => {
       logout(state.token).then(() => {
         removeToken() // must remove  token  first
@@ -76,7 +96,16 @@ const actions = {
         reject(error)
       })
     })
+  }, */
+  logout({ commit, state }) {
+    return new Promise((resolve, reject) => {
+      commit('SET_TOKEN', '')
+      commit('SET_ROLES', [])
+      removeToken()
+      resolve()
+    })
   },
+
 
   // remove token
   resetToken({ commit }) {

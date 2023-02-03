@@ -62,16 +62,24 @@ export const constantRoutes = [
     meta: { title: '医院设置', icon: 'el-icon-s-help' },
     children: [
       {
-        path: 'index',
+        path: 'list',
         name: '查询设置',
-        component: () => import('@/views/hosp/index'),
+        component: () => import('@/views/hosp/hospSet/list.vue'),
         meta: { title: '查询设置', icon: 'tree' }
       },
       {
         path: 'add',
         name: '添加设置',
-        component: () => import('@/views/hosp/add'),
+        component: () => import('@/views/hosp/hospSet/form.vue'),
         meta: { title: '添加设置', icon: 'table' }
+      },
+      {
+        path: `edit/:id`,
+        name: '编辑设置',
+        component: () => import('@/views/hosp/hospSet/form.vue'),
+        meta: { title: '编辑设置', icon: 'table' ,noCache: true},
+        // 是一个隐藏路由
+        hidden: true
       }
     ]
   },
