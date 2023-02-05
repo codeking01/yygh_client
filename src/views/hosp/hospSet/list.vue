@@ -83,7 +83,7 @@
 import hospitalSet from '@/api/hosp/hospitalSet'
 
 export default {
-  name: 'index',
+  name: 'list',
   // 定义数据模型
   data() {
     return {
