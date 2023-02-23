@@ -99,6 +99,13 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: 'hospital/list',
+    name: '医院列表',
+    component: () =>import('@/views/hosp/hospital/list'),
+    meta: { title: '医院列表', icon: 'table' }
+  },
+
 
   /* {
     path: '/example',
