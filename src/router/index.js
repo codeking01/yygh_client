@@ -80,6 +80,19 @@ export const constantRoutes = [
         meta: { title: '编辑设置', icon: 'table' ,noCache: true},
         // 是一个隐藏路由
         hidden: true
+      },
+      {
+        path: 'hospital/list',
+        name: '医院列表',
+        component: () =>import('@/views/hosp/hospital/list'),
+        meta: { title: '医院列表', icon: 'table' }
+      },
+      {
+        path: 'hospital/show/:id',
+        name: '查看',
+        component: () => import('@/views/hosp/hospital/show'),
+        meta: { title: '查看', noCache: true },
+        hidden: true
       }
     ]
   },
@@ -98,12 +111,6 @@ export const constantRoutes = [
         meta: { title: '数据字典', icon: 'table' }
       }
     ]
-  },
-  {
-    path: 'hospital/list',
-    name: '医院列表',
-    component: () =>import('@/views/hosp/hospital/list'),
-    meta: { title: '医院列表', icon: 'table' }
   },
 
 

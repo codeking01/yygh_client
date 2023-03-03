@@ -39,7 +39,19 @@ module.exports = {
     },
     //请求服务器的地址
     // proxy: 'http://localhost:8201',
-    before: require('./mock/mock-server.js')
+    proxy: {
+      '/admin/cmn/dict': {
+        target: 'http://localhost:8202',
+        ws: true,
+        changeOrigin: true
+      },
+      '/admin/hosp/': {
+        target: 'http://localhost:8201',
+        ws: true,
+        changeOrigin: true
+      },
+    },
+      // before: require('./mock/mock-server.js')
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that

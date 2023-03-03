@@ -4,7 +4,7 @@ export default {
   //医院列表
   getPageList(current,limit,searchObj) {
     return request ({
-      url: `/admin/hosp/hospital/list/${current}/${limit}`,
+      url: `/admin/hosp/hospital/${current}/${limit}`,
       method: 'get',
       params: searchObj
     })
@@ -29,5 +29,13 @@ export default {
       url: `/admin/hosp/hospital/updateStatus/${id}/${status}`,
       method: 'get'
     })
+  },
+  //查看医院详情
+  getHospById(id) {
+    return request ({
+      url: `/admin/hosp/hospital/show/${id}`,
+      method: 'get'
+    })
   }
+
 }
