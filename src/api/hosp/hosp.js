@@ -2,8 +2,8 @@ import request from '@/utils/request'
 
 export default {
   //医院列表
-  getPageList(current,limit,searchObj) {
-    return request ({
+  getPageList(current, limit, searchObj) {
+    return request({
       url: `/admin/hosp/hospital/${current}/${limit}`,
       method: 'get',
       params: searchObj
@@ -32,10 +32,16 @@ export default {
   },
   //查看医院详情
   getHospById(id) {
-    return request ({
+    return request({
       url: `/admin/hosp/hospital/show/${id}`,
       method: 'get'
     })
+  },
+  // 医院科室信息
+  getDeptByHoscode: (hoscode) => {
+    return request({
+      url: `admin/hosp/department/getDeptList/${hoscode}`,
+      method: 'get'
+    })
   }
-
 }

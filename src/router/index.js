@@ -77,14 +77,14 @@ export const constantRoutes = [
         path: `edit/:id`,
         name: '编辑设置',
         component: () => import('@/views/hosp/hospSet/form.vue'),
-        meta: { title: '编辑设置', icon: 'table' ,noCache: true},
+        meta: { title: '编辑设置', icon: 'table', noCache: true },
         // 是一个隐藏路由
         hidden: true
       },
       {
         path: 'hospital/list',
         name: '医院列表',
-        component: () =>import('@/views/hosp/hospital/list'),
+        component: () => import('@/views/hosp/hospital/list'),
         meta: { title: '医院列表', icon: 'table' }
       },
       {
@@ -93,7 +93,15 @@ export const constantRoutes = [
         component: () => import('@/views/hosp/hospital/show'),
         meta: { title: '查看', noCache: true },
         hidden: true
+      },
+      {
+        path: 'hospital/schedule/:hoscode',
+        name: '排班',
+        component: () => import('@/views/hosp/hospital/schedule'),
+        meta: { title: '排班', noCache: true },
+        hidden: true
       }
+
     ]
   },
   {
@@ -112,7 +120,6 @@ export const constantRoutes = [
       }
     ]
   },
-
 
   /* {
     path: '/example',

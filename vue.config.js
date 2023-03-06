@@ -40,7 +40,7 @@ module.exports = {
     //请求服务器的地址
     // proxy: 'http://localhost:8201',
     proxy: {
-      '/admin/cmn/dict': {
+      '/admin/cmn/': {
         target: 'http://localhost:8202',
         ws: true,
         changeOrigin: true
