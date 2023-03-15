@@ -171,8 +171,24 @@ export const constantRoutes = [
         hidden: true
       }
     ]
-  }
-,
+  },
+  {
+    path: '/statistics',
+    component: Layout,
+    redirect: '/statistics/order/index',
+    name: 'BasesInfo',
+    meta: { title: '统计管理', icon: 'table' },
+    alwaysShow: true,
+    children: [
+      {
+        path: 'order/index',
+        name: '预约统计',
+        component: () =>import('@/views/statistics/order/index'),
+        meta: { title: '预约统计' }
+      }
+    ]
+  },
+
 
   /* {
     path: '/example',
